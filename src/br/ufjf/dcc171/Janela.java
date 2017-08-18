@@ -46,6 +46,8 @@ class Janela extends JFrame {
             texto2.addActionListener(new numero2Enter());
             texto3.addActionListener(new numero3Enter());
             
+            int final = (Math.pow(n2, 2) - (4)*a*c);
+            
             exibe.addActionListener(new botaoClicado());
     }
 
@@ -53,7 +55,7 @@ class Janela extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "O resultado é " + n1 + n2 + n3, "Conta Final", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "O resultado é ",  "Conta Final", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
