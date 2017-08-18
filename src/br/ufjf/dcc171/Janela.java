@@ -2,9 +2,12 @@ package br.ufjf.dcc171;
 
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 class Janela extends JFrame {
@@ -17,9 +20,9 @@ class Janela extends JFrame {
     private final JTextField texto2;
     private final JTextField texto3;
     private final JButton exibe = new JButton("Valor final");
-    private int n1;
-    private int n2;
-    private int n3;
+    private double n1;
+    private double n2;
+    private double n3;
     
     public Janela() throws HeadlessException {
             super ("Equação do Segundo Grau");
@@ -38,6 +41,46 @@ class Janela extends JFrame {
             add(etiqueta3);
             add(texto3);
             add(exibe);
+            
+            texto.addActionListener(new numero1Enter());
+            texto2.addActionListener(new numero2Enter());
+            texto3.addActionListener(new numero3Enter());
+            
+            exibe.addActionListener(new botaoClicado());
+    }
+
+    private class botaoClicado implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "O resultado é " + n1 + n2 + n3, "Conta Final", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private class numero1Enter implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            n1 = Double.parseDouble(texto.getText());
+            texto2.requestFocus();
+        }
+    }
+
+    private class numero2Enter implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            n2 = Double.parseDouble(texto2.getText());
+            texto3.requestFocus();
+        }
+    }
+
+    private class numero3Enter implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            n3 = Double.parseDouble(texto3.getText());
+        }
     }
     
     
