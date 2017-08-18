@@ -23,6 +23,8 @@ class Janela extends JFrame {
     private double n1;
     private double n2;
     private double n3;
+    private double valor;
+    private double valor2;
     
     public Janela() throws HeadlessException {
             super ("Equação do Segundo Grau");
@@ -46,7 +48,11 @@ class Janela extends JFrame {
             texto2.addActionListener(new numero2Enter());
             texto3.addActionListener(new numero3Enter());
             
-            int final = (Math.pow(n2, 2) - (4)*a*c);
+            double delta = (Math.pow(n2, 2) - (4)*a*c);
+            double final = (-n2 + Math.sqrt(delta))/2n1;
+            double final2 = (-n2 - Math.sqrt(delta))/2n1;
+            valor = final;
+            valor2 = final2;
             
             exibe.addActionListener(new botaoClicado());
     }
@@ -55,7 +61,7 @@ class Janela extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "O resultado é ",  "Conta Final", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "O resultado é " + valor " e " + valor2,  "Conta Final", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
