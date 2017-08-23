@@ -47,13 +47,7 @@ class Janela extends JFrame {
             texto.addActionListener(new numero1Enter());
             texto2.addActionListener(new numero2Enter());
             texto3.addActionListener(new numero3Enter());
-            
-            double delta = (Math.pow(n2, 2) - (4)*a*c);
-            double final = (-n2 + Math.sqrt(delta))/2n1;
-            double final2 = (-n2 - Math.sqrt(delta))/2n1;
-            valor = final;
-            valor2 = final2;
-            
+                        
             exibe.addActionListener(new botaoClicado());
     }
 
@@ -61,7 +55,12 @@ class Janela extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "O resultado é " + valor " e " + valor2,  "Conta Final", JOptionPane.INFORMATION_MESSAGE);
+            double delta = (Math.pow(n2, 2) - (4)*n1*n3);
+            double fina = (-n2 + Math.sqrt(delta))/(2*n1);
+            double fina2 = (-n2 - Math.sqrt(delta))/(2*n1);
+            valor = fina;
+            valor2 = fina2;
+            JOptionPane.showMessageDialog(null, "O resultado é " + valor + " e " + valor2,  "Conta Final", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
